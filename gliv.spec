@@ -12,7 +12,7 @@ URL:		http://guichaz.free.fr/gliv/
 License:	GPL
 Group:		Graphics
 BuildRoot:	%{_tmppath}/%{name}-buildroot
-BuildRequires:	pkgconfig XFree86-devel libgtkglext-devel libgtk+2.0-devel gettext
+BuildRequires:	pkgconfig X11-devel libgtkglext-devel libgtk+2.0-devel gettext
 Requires:	ImageMagick
 
 %description
