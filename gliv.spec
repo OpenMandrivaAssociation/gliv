@@ -37,9 +37,15 @@ rm -rf $RPM_BUILD_ROOT
 %makeinstall
 
 #menu
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}): command="%{name}" icon="graphics_section.png" needs="x11" title="GLiv" longtitle="OpenGL graphics viewer" section="Multimedia/Graphics"
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
+cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
+[Desktop Entry]
+Type=Application
+Exec=%{name}
+Icon=graphics_section
+Name=GLiv
+Comment=OpenGL graphics viewer
+Categories=Graphics;Viewer;
 EOF
 
 %find_lang %name
@@ -61,7 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(fr) %{_mandir}/fr/man1/*
 %lang(ru) %{_mandir}/ru/man1/*
 %_mandir/man1/*
-%{_menudir}/%name
+%{_datadir}/applications/mandriva-%name.desktop
 %_datadir/pixmaps/*
 %{_datadir}/applications/*
 
