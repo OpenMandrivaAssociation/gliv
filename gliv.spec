@@ -1,6 +1,6 @@
 %define name	gliv
-%define version	1.9.5
-%define release %mkrel 2
+%define version	1.9.6
+%define release %mkrel 1
 
 Name: 	 	%{name}
 Summary: 	OpenGL image viewer
@@ -14,8 +14,6 @@ Group:		Graphics
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	pkgconfig X11-devel libgtkglext-devel libgtk+2.0-devel gettext
 Requires:	ImageMagick
-# (tv) strange error (unpackaged files) on x86_64:
-BuildArch: %{ix86}
 
 %description
 GLiv is an OpenGL image viewer. It performs image loading via Gdk-pixbuf
@@ -68,6 +66,6 @@ rm -rf $RPM_BUILD_ROOT
 %lang(ru) %{_mandir}/ru/man1/*
 %_mandir/man1/*
 %{_datadir}/applications/mandriva-%name.desktop
-%_datadir/pixmaps/*
+#%_datadir/pixmaps/*
 %{_datadir}/applications/*
 
