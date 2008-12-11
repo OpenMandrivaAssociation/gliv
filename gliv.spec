@@ -13,7 +13,7 @@ License:	GPL
 Group:		Graphics
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	pkgconfig X11-devel libgtkglext-devel libgtk+2.0-devel gettext
-Requires:	ImageMagick
+Requires:	imagemagick
 
 %description
 GLiv is an OpenGL image viewer. It performs image loading via Gdk-pixbuf
