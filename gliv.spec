@@ -1,6 +1,6 @@
 %define name	gliv
 %define version	1.9.6
-%define release %mkrel 3
+%define release %mkrel 4
 
 Name: 	 	%{name}
 Summary: 	OpenGL image viewer
