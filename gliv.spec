@@ -1,18 +1,23 @@
 %define name	gliv
-%define version	1.9.6
-%define release %mkrel 4
+%define version	1.9.7
+%define release %mkrel 1
 
 Name: 	 	%{name}
 Summary: 	OpenGL image viewer
 Version: 	%{version}
 Release: 	%{release}
 
-Source:		http://guichaz.free.fr/gliv/%{name}-%{version}.tar.bz2
+Source:		http://guichaz.free.fr/gliv/files/%{name}-%{version}.tar.bz2
+Patch0:		gliv-1.9.7-fix-link.patch
 URL:		http://guichaz.free.fr/gliv/
 License:	GPL
 Group:		Graphics
 BuildRoot:	%{_tmppath}/%{name}-buildroot
-BuildRequires:	pkgconfig X11-devel libgtkglext-devel libgtk+2.0-devel gettext
+BuildRequires:	mesaglu-devel
+BuildRequires:	libx11-devel
+BuildRequires:	gtk+2-devel
+BuildRequires:	libgtkglext-devel
+BuildRequires:	gettext-devel
 Requires:	imagemagick
 
 %description
@@ -25,26 +30,16 @@ board.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
+autoreconf -fi
 %configure2_5x
 %make
 										
 %install
 rm -rf $RPM_BUILD_ROOT
 %makeinstall
-
-#menu
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
-cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
-[Desktop Entry]
-Type=Application
-Exec=%{name}
-Icon=graphics_section
-Name=GLiv
-Comment=OpenGL graphics viewer
-Categories=Graphics;Viewer;
-EOF
 
 %find_lang %name
 
@@ -68,8 +63,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(de) %{_mandir}/de/man1/*
 %lang(fr) %{_mandir}/fr/man1/*
 %lang(ru) %{_mandir}/ru/man1/*
+%lang(cs) %{_mandir}/cs/man1/*
+%{_datadir}/pixmaps/gliv.png
 %_mandir/man1/*
-%{_datadir}/applications/mandriva-%name.desktop
-#%_datadir/pixmaps/*
 %{_datadir}/applications/*
-
