@@ -1,18 +1,13 @@
-%define name	gliv
-%define version	1.9.7
-%define release %mkrel 1
-
-Name: 	 	%{name}
+Name: 	 	gliv
 Summary: 	OpenGL image viewer
-Version: 	%{version}
-Release: 	%{release}
+Version: 	1.9.7
+Release: 	2
 
 Source:		http://guichaz.free.fr/gliv/files/%{name}-%{version}.tar.bz2
 Patch0:		gliv-1.9.7-fix-link.patch
 URL:		http://guichaz.free.fr/gliv/
 License:	GPL
 Group:		Graphics
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	mesaglu-devel
 BuildRequires:	libx11-devel
 BuildRequires:	gtk+2-devel
@@ -33,28 +28,15 @@ board.
 %patch0 -p0
 
 %build
+export LDFLAGS="-lm"
 autoreconf -fi
 %configure2_5x
 %make
 										
 %install
-rm -rf $RPM_BUILD_ROOT
 %makeinstall
 
 %find_lang %name
-
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-%if %mdkversion < 200900
-%post
-%update_menus
-%endif
-		
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%endif
 
 %files -f %{name}.lang
 %defattr(-,root,root)
@@ -67,3 +49,61 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/pixmaps/gliv.png
 %_mandir/man1/*
 %{_datadir}/applications/*
+
+
+%changelog
+* Sat Dec 25 2010 Funda Wang <fwang@mandriva.org> 1.9.7-1mdv2011.0
++ Revision: 624828
+- new version 1.9.7
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+
+  + Oden Eriksson <oeriksson@mandriva.com>
+    - lowercase ImageMagick
+
+* Thu Jul 24 2008 Thierry Vignaud <tv@mandriva.org> 1.9.6-3mdv2009.0
++ Revision: 246202
+- rebuild
+
+  + Pixel <pixel@mandriva.com>
+    - rpm filetriggers deprecates update_menus/update_scrollkeeper/update_mime_database/update_icon_cache/update_desktop_database/post_install_gconf_schemas
+
+* Mon Mar 03 2008 Austin Acton <austin@mandriva.org> 1.9.6-1mdv2008.1
++ Revision: 177842
+- new version
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - auto-convert XDG menu entry
+    - do not compile on gliv
+    - kill re-definition of %%buildroot on Pixel's request
+    - buildrequires X11-devel instead of XFree86-devel
+    - use %%mkrel
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+
+* Mon Mar 20 2006 Austin Acton <austin@mandriva.org> 1.9.5-1mdk
+- New release 1.9.5
+
+* Thu Nov 17 2005 Lenny Cartier <lenny@mandriva.com> 1.9.4-1mdk
+- 1.9.4
+
+* Wed Aug 24 2005 Austin Acton <austin@mandriva.org> 1.9.3-1mdk
+- 1.9.3
+- source URL
+- configure 2.5
+
+* Thu Jan 06 2005 Lenny Cartier <lenny@mandrakesoft.com> 1.9.1-1mdk
+- 1.9.1
+
+* Thu Aug 05 2004 Lenny Cartier <lenny@mandrakesoft.com> 1.8.4-1mdk
+- 1.8.4
+
+* Fri Jun 25 2004 Lenny Cartier <lenny@mandrakesoft.com> 1.8.3-1mdk
+- 1.8.3
+
+* Fri Apr 04 2003 Austin Acton <aacton@yorku.ca> 1.7.1-1mdk
+- initial package
+
