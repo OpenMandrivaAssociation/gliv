@@ -1,7 +1,7 @@
 Name: 	 	gliv
 Summary: 	OpenGL image viewer
 Version: 	1.9.7
-Release: 	2
+Release: 	3
 
 Source:		http://guichaz.free.fr/gliv/files/%{name}-%{version}.tar.bz2
 Patch0:		gliv-1.9.7-fix-link.patch
