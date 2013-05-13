@@ -9,9 +9,9 @@ URL:		http://guichaz.free.fr/gliv/
 License:	GPL
 Group:		Graphics
 BuildRequires:	mesaglu-devel
-BuildRequires:	libx11-devel
+BuildRequires:	pkgconfig(x11)
 BuildRequires:	gtk+2-devel
-BuildRequires:	libgtkglext-devel
+BuildRequires:	pkgconfig(gtkglext-1.0)
 BuildRequires:	gettext-devel
 Requires:	imagemagick
 
