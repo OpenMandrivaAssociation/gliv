@@ -1,7 +1,7 @@
 Name: 	 	gliv
 Summary: 	OpenGL image viewer
 Version: 	1.9.7
-Release: 	3
+Release: 	4
 
 Source:		http://guichaz.free.fr/gliv/files/%{name}-%{version}.tar.bz2
 Patch0:		gliv-1.9.7-fix-link.patch
@@ -10,7 +10,7 @@ License:	GPL
 Group:		Graphics
 BuildRequires:	mesaglu-devel
 BuildRequires:	pkgconfig(x11)
-BuildRequires:	gtk+2-devel
+BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(gtkglext-1.0)
 BuildRequires:	gettext-devel
 Requires:	imagemagick
