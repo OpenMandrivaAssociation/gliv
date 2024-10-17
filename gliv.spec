@@ -5,7 +5,7 @@ Release: 	5
 
 Source:		http://guichaz.free.fr/gliv/files/%{name}-%{version}.tar.bz2
 Patch0:		gliv-1.9.7-fix-link.patch
-URL:		http://guichaz.free.fr/gliv/
+URL:		https://guichaz.free.fr/gliv/
 License:	GPL
 Group:		Graphics
 BuildRequires:	mesaglu-devel
