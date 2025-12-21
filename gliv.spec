@@ -8,6 +8,11 @@ Patch0:		gliv-1.9.7-fix-link.patch
 URL:		https://guichaz.free.fr/gliv/
 License:	GPL
 Group:		Graphics
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	mesaglu-devel
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(gtk+-2.0)
